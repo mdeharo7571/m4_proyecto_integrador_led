@@ -1,0 +1,29 @@
+diff --git a/arch/arm/boot/dts/am335x-boneblack-common.dtsi b/arch/arm/boot/dts/am335x-boneblack-common.dtsi
+index 64c3e9269f40..d4dba664ffbb 100644
+--- a/arch/arm/boot/dts/am335x-boneblack-common.dtsi
++++ b/arch/arm/boot/dts/am335x-boneblack-common.dtsi
+@@ -67,6 +67,24 @@ AM33XX_PADCONF(AM335X_PIN_MCASP0_ACLKX, PIN_OUTPUT_PULLDOWN, MUX_MODE0)
+ 			AM33XX_PADCONF(AM335X_PIN_GPMC_A11, PIN_OUTPUT_PULLDOWN, MUX_MODE7) /* gpmc_a11.GPIO1_27 */
+ 		>;
+ 	};
++
++	ehrpwm1_pins: pinmux_ehrpwm1a_pins {
++        pinctrl-single,pins = <
++            AM33XX_PADCONF(AM335X_PIN_GPMC_A2, PIN_OUTPUT, MUX_MODE6)    /* gpmc_a2.ehrpwm1a */
++            AM33XX_PADCONF(AM335X_PIN_GPMC_A3, PIN_OUTPUT, MUX_MODE6)    /* gpmc_a3.ehrpwm1b */
++        >;
++	};
++};
++&epwmss1 {
++    status = "okay";
++};
++
++
++
++&ehrpwm1 {
++    status = "okay";
++    pinctrl-names = "default";
++    pinctrl-0 = <&ehrpwm1_pins>;
+ };
+ 
+ &lcdc {
